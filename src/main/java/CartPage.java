@@ -16,13 +16,6 @@ public class CartPage {
     By continueShoppingButton=(By.id("continue-shopping"));
 
     By listOfItemsInYourCart=(By.xpath("//div[@class='inventory_item_name']"));
-    //By listOfItemsInYourCart=(By.xpath("//div[@class='cart_list']"));
-    //By listOfItemsInYourCart=(By.xpath("//*[@class='cart_list']/div/div[contains(@class, 'inventory_item_name')]"));
-
-
-    //
-    //"//div[@class='cart_list']"
-
 
     public WebElement getCheckoutButton(){
         return driver.findElement(checkoutButton);
@@ -35,5 +28,4 @@ public class CartPage {
     public List<WebElement> getListOfItemsInYourCart(){
         return driver.findElements(listOfItemsInYourCart);
     }
-
 }
