@@ -9,5 +9,8 @@
         <module name="SwagLabsTest2" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SwagLabsTest2" target="18" />
+    </bytecodeTargetLevel>
   </component>
 </project>
