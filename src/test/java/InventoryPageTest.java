@@ -1,13 +1,9 @@
 import org.testng.annotations.Test;
 
-import java.util.List;
-
 public class InventoryPageTest extends BaseTest{
-
 
     @Test
     public void AddToCartTest() {
-
 
         LandingPage landingPage = new LandingPage(driver);
         landingPage.getUsername().sendKeys("standard_user");
@@ -38,11 +34,5 @@ public class InventoryPageTest extends BaseTest{
         inventoryPage.getSauceLabsBackpack().click();
         inventoryPage.getSauceLabsBoltTShirt().click();
         inventoryPage.getSauceLabsBikeLight().click();
-
-
-        //String itemsInCart=inventoryPage.getShoppingCartBadge().getText();
-
-
-
     }
 }

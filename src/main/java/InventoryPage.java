@@ -5,13 +5,13 @@ import org.openqa.selenium.WebElement;
 public class InventoryPage {
 
     public WebDriver driver;
+
     public InventoryPage(WebDriver driver){
         this.driver=driver;
     }
 
-
-    //By productsContainer=(By.linkText("Products"));
     By productsContainer=(By.cssSelector(".title"));
+
     By shoppingCartContainer=(By.id("shopping_cart_container"));
 
     By shoppingCartContainerBtn=(By.cssSelector("a[class='shopping_cart_link']"));
@@ -30,8 +30,7 @@ public class InventoryPage {
 
     By shoppingCartContainerBadge=(By.xpath("//a[@class='shopping_cart_link']/span[@class='shopping_cart_badge']"));
 
-
-     public WebElement getProductContainer(){
+    public WebElement getProductContainer(){
         return driver.findElement(productsContainer);
     }
 

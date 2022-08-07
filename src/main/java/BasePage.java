@@ -13,7 +13,7 @@ public class BasePage {
     public WebDriver initializeDriver() throws IOException {
 
         prop = new Properties();
-        FileInputStream fis = new FileInputStream("D:\\QA Projects\\SwagLabsTest2\\src\\main\\resources\\data.properties");
+        FileInputStream fis = new FileInputStream("src\\main\\resources\\data.properties");
         prop.load(fis);
 //    String browserName="chrome";
         driver=new ChromeDriver();
