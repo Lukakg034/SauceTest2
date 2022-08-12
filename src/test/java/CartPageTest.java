@@ -10,7 +10,6 @@ import java.util.List;
 
 public class CartPageTest extends BaseTest{
 
-
     @Test()
     public void verifyUserAbleToRemoveItemFromCart() throws InterruptedException {
 
@@ -43,17 +42,45 @@ public class CartPageTest extends BaseTest{
         Assert.assertEquals(itemNameList.get(0) ,("Sauce Labs Backpack"));
         Assert.assertEquals(itemNameList.get(2),("Sauce Labs Bike Light"));
 
-//        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(1));
-
         List<WebElement> itemsToRemove=cartPage.getRemoveButtons();
         for (WebElement removeItem:itemsToRemove){
-//            driver.wait();
             removeItem.click();
         }
 
         Assert.assertTrue(cartPage.getListOfItemsInYourCart().isEmpty());
-        //Optional assert
-        // Assert.assertFalse(cartPage.getRemoveBtn().isDisplayed());
+    }
 
+    @Test
+    public void verifyUserAbleToRemoveOnlyOneOfTheItems(){
+
+        LandingPage landingPage=new LandingPage(driver);
+        landingPage.getUsername().sendKeys("standard_user");
+        landingPage.getPassword().sendKeys("secret_sauce");
+        landingPage.getLoginButton().click();
+
+        InventoryPage inventoryPage=new InventoryPage(driver);
+
+        //Adding 3 items to cart
+        inventoryPage.getSauceLabsBackpack().click();
+        inventoryPage.getSauceLabsBoltTShirt().click();
+        inventoryPage.getSauceLabsBikeLight().click();
+        inventoryPage.getShoppingCartBtn().click();
+
+        CartPage cartPage=new CartPage(driver);
+        List<WebElement> cartItemList=cartPage.getListOfItemsInYourCart();
+        List <String> itemList=new ArrayList<>();
+        for (WebElement item:cartItemList){
+            itemList.add(item.getText());
+        }
+
+        Assert.assertTrue(itemList.contains("Sauce Labs Backpack"));
+        Assert.assertTrue(itemList.contains("Sauce Labs Bolt T-Shirt"));
+        Assert.assertTrue(itemList.contains("Sauce Labs Bike Light"));
+
+        itemList.remove(0);
+
+        Assert.assertFalse(itemList.contains("Sauce Labs Backpack"));
+        Assert.assertTrue(itemList.contains("Sauce Labs Bolt T-Shirt"));
+        Assert.assertTrue(itemList.contains("Sauce Labs Bike Light"));
     }
 }
