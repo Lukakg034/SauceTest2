@@ -10,32 +10,29 @@ public class CheckoutPage {
         this.driver=driver;
     }
 
+    By firstName = By.id("first-name");
 
-    //Da li je ok pokupiti sve lokatore sa stranice iako nisu inicijalno potrebni?
-    //Cisto da postoje za eventualno kasnije testiranje?
+    By lastName = By.id("last-name");
 
-    By firstName=(By.id("first-name"));
+    By postalCode = By.id("postal-code");
 
-    By lastName=(By.id("last-name"));
+    By continueBtn = By.id("continue");
 
-    By postalCode=(By.id("postal-code"));
+    By errorMessageContainer = By.xpath("//div[@class='error-message-container error']");
 
-    By continueBtn=(By.id("continue"));
+    By finishBtn = By.id("finish");
 
-    By errorMessageContainer=(By.xpath("//div[@class='error-message-container error']"));
+    By finishDisplayText = By.xpath("//div[@class='complete-text']");
 
-    By finishBtn=(By.id("finish"));
-
-    By finishDisplayText=(By.xpath("//div[@class='complete-text']"));
-    public WebElement getFirstName(){
+    public WebElement getFirstNameInputField(){
         return driver.findElement(firstName);
     }
 
-    public WebElement getLastName(){
+    public WebElement getLastNameInputField(){
         return driver.findElement(lastName);
     }
 
-    public WebElement getPostalCode(){
+    public WebElement getPostalCodeInputField(){
         return driver.findElement(postalCode);
     }
 

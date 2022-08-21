@@ -4,13 +4,13 @@ import org.openqa.selenium.WebElement;
 
 public class LandingPage extends BasePage{
 
-    By username= By.cssSelector("input[placeholder='Username']");
+    By username = By.cssSelector("input[placeholder='Username']");
 
-    By password=By.id("password");
+    By password = By.id("password");
 
-    By loginButton=By.id("login-button");
+    By loginButton = By.id("login-button");
 
-    By errorMessage=By.cssSelector("div[class='error-message-container error']");
+    By errorMessage = By.cssSelector("div[class='error-message-container error']");
 
     public LandingPage(WebDriver driver){
 

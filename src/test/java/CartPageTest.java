@@ -1,17 +1,13 @@
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartPageTest extends BaseTest{
 
     @Test()
-    public void verifyUserAbleToRemoveItemFromCart() throws InterruptedException {
+    public void verifyUserAbleToRemoveItemFromCart(){
 
         LandingPage landingPage=new LandingPage(driver);
         landingPage.getUsername().sendKeys("standard_user");
@@ -20,12 +16,10 @@ public class CartPageTest extends BaseTest{
 
         InventoryPage inventoryPage=new InventoryPage(driver);
 
-        //Adding 3 items to cart
-        inventoryPage.getSauceLabsBackpack().click();
-        inventoryPage.getSauceLabsBoltTShirt().click();
-        inventoryPage.getSauceLabsBikeLight().click();
-        inventoryPage.getShoppingCartBtn().click();
-        Thread.sleep(3000);
+        inventoryPage.getSauceLabsBackpackAddButton().click();
+        inventoryPage.getSauceLabsBoltTShirtAddButton().click();
+        inventoryPage.getSauceLabsBikeLightAddButton().click();
+        inventoryPage.getShoppingCartButton().click();
 
         CartPage cartPage=new CartPage(driver);
         List<WebElement> cartItemList=cartPage.getListOfItemsInYourCart();
@@ -60,11 +54,10 @@ public class CartPageTest extends BaseTest{
 
         InventoryPage inventoryPage=new InventoryPage(driver);
 
-        //Adding 3 items to cart
-        inventoryPage.getSauceLabsBackpack().click();
-        inventoryPage.getSauceLabsBoltTShirt().click();
-        inventoryPage.getSauceLabsBikeLight().click();
-        inventoryPage.getShoppingCartBtn().click();
+        inventoryPage.getSauceLabsBackpackAddButton().click();
+        inventoryPage.getSauceLabsBoltTShirtAddButton().click();
+        inventoryPage.getSauceLabsBikeLightAddButton().click();
+        inventoryPage.getShoppingCartButton().click();
 
         CartPage cartPage=new CartPage(driver);
         List<WebElement> cartItemList=cartPage.getListOfItemsInYourCart();
@@ -77,10 +70,15 @@ public class CartPageTest extends BaseTest{
         Assert.assertTrue(itemList.contains("Sauce Labs Bolt T-Shirt"));
         Assert.assertTrue(itemList.contains("Sauce Labs Bike Light"));
 
-        itemList.remove(0);
+        cartPage.getRemoveBackpackItemFromCart().click();
 
-        Assert.assertFalse(itemList.contains("Sauce Labs Backpack"));
-        Assert.assertTrue(itemList.contains("Sauce Labs Bolt T-Shirt"));
-        Assert.assertTrue(itemList.contains("Sauce Labs Bike Light"));
+        List<WebElement> cartItemListAfterRemovingItem=cartPage.getListOfItemsInYourCart();
+        List<String> itemListWithoutRemovedItem=new ArrayList<>();
+        for (WebElement item:cartItemListAfterRemovingItem){
+            itemListWithoutRemovedItem.add(item.getText());
+        }
+
+        Assert.assertTrue(inventoryPage.getTShirtProductName().isDisplayed(), "TShirt item is not displayed ");
+        Assert.assertFalse(cartPage.isBackpackVisible(), "Backpack item is displayed");
     }
 }

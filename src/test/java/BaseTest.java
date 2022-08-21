@@ -15,12 +15,12 @@ public class BaseTest {
         driver.get("https://www.saucedemo.com");
 
     }
-
     @AfterMethod
     public void TeardownTest() {
         driver.close();
         driver.quit();
     }
+
 }
 
 
