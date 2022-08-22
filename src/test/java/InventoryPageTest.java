@@ -48,7 +48,7 @@ public class InventoryPageTest extends BaseTest{
 
         InventoryPage inventoryPage=new InventoryPage(driver);
 
-        List<WebElement> priceOfAllTheItems=inventoryPage.getInventoryListOfAllTheItems();
+        List<WebElement> priceOfAllTheItems=inventoryPage.getInventoryListOfAllTheItemPrices();
         List<String> priceOfAllItems=new ArrayList<>();
         for (WebElement itemPrice:priceOfAllTheItems){
             priceOfAllItems.add(itemPrice.getText());
@@ -62,9 +62,9 @@ public class InventoryPageTest extends BaseTest{
             pricesWithoutDollar.add(priceWithoutSign);
         }
 
-        inventoryPage.getDropdownLowToHighPrice().click();
+        inventoryPage.getDropdownMenuLowToHighPriceSorter().click();
 
-        List<WebElement> lowToHighItemList=inventoryPage.getInventoryListOfAllTheItems();
+        List<WebElement> lowToHighItemList=inventoryPage.getInventoryListOfAllTheItemPrices();
         List<String> lowToHighPrices=new ArrayList<>();
         for (WebElement itemPrice:lowToHighItemList){
             lowToHighPrices.add(itemPrice.getText());
@@ -99,7 +99,7 @@ public class InventoryPageTest extends BaseTest{
 
         InventoryPage inventoryPage=new InventoryPage(driver);
 
-        List<WebElement> itemDescriptionOfAllTheItems=inventoryPage.getItemDescriptionOfAllTheItems();
+        List<WebElement> itemDescriptionOfAllTheItems=inventoryPage.getItemDescriptionTextOfAllTheItems();
         List<String> inventoryItemListDescriptions=new ArrayList<>();
         for (WebElement singleItemDescription:itemDescriptionOfAllTheItems){
             inventoryItemListDescriptions.add(singleItemDescription.getText());

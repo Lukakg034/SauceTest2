@@ -15,7 +15,7 @@ public class LandingTest extends BaseTest{
     }
 
     @Test(priority = 2)
-    public void verifyInvalidUserLogin() throws InterruptedException {
+    public void verifyInvalidUserLogin()  {
         LandingPage landingPage=new LandingPage(driver);
         landingPage.getUsername().sendKeys("locked_out_user");
         landingPage.getPassword().sendKeys("secret_sauce");

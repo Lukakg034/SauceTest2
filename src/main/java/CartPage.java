@@ -32,24 +32,12 @@ public class CartPage {
         return driver.findElement(checkoutButton);
     }
 
-    public WebElement getContinueShoppingButton(){
-        return driver.findElement(continueShoppingButton);
-    }
-
     public List<WebElement> getListOfItemsInYourCart(){
         return driver.findElements(listOfItemsInYourCart);
     }
 
     public List<WebElement> getRemoveButtons(){
         return driver.findElements(removeButtons);
-    }
-
-    public WebElement getRemoveBtn(){
-        return driver.findElement(removeBtn);
-    }
-
-    public WebElement getCartList(){
-        return driver.findElement(cartList);
     }
 
     public WebElement getRemoveBackpackItemFromCart(){

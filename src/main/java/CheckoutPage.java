@@ -10,45 +10,45 @@ public class CheckoutPage {
         this.driver=driver;
     }
 
-    By firstName = By.id("first-name");
+    By firstNameInputField = By.id("first-name");
 
-    By lastName = By.id("last-name");
+    By lastNameInputField = By.id("last-name");
 
-    By postalCode = By.id("postal-code");
+    By postalCodeInputField = By.id("postal-code");
 
-    By continueBtn = By.id("continue");
+    By continueButton = By.id("continue");
 
-    By errorMessageContainer = By.xpath("//div[@class='error-message-container error']");
+    By errorMessage = By.xpath("//div[@class='error-message-container error']");
 
-    By finishBtn = By.id("finish");
+    By finishOrderButton = By.id("finish");
 
-    By finishDisplayText = By.xpath("//div[@class='complete-text']");
+    By finishOrderDisplayText = By.xpath("//div[@class='complete-text']");
 
     public WebElement getFirstNameInputField(){
-        return driver.findElement(firstName);
+        return driver.findElement(firstNameInputField);
     }
 
     public WebElement getLastNameInputField(){
-        return driver.findElement(lastName);
+        return driver.findElement(lastNameInputField);
     }
 
     public WebElement getPostalCodeInputField(){
-        return driver.findElement(postalCode);
+        return driver.findElement(postalCodeInputField);
     }
 
-    public WebElement getContinueBtn(){
-        return driver.findElement(continueBtn);
+    public WebElement getContinueButton(){
+        return driver.findElement(continueButton);
     }
 
     public WebElement getErrorMessage(){
-        return driver.findElement(errorMessageContainer);
+        return driver.findElement(errorMessage);
     }
 
-    public WebElement getFinishBtn(){
-        return driver.findElement(finishBtn);
+    public WebElement getFinishOrderButton(){
+        return driver.findElement(finishOrderButton);
     }
 
-    public WebElement getFinishText(){
-        return driver.findElement(finishDisplayText);
+    public WebElement getFinishOrderDisplayText(){
+        return driver.findElement(finishOrderDisplayText);
     }
 }

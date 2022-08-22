@@ -21,7 +21,7 @@ public class CheckoutPageTest extends BaseTest {
         CheckoutPage checkoutPage=new CheckoutPage(driver);
         checkoutPage.getLastNameInputField().sendKeys("ASDFG");
         checkoutPage.getPostalCodeInputField().sendKeys("58216");
-        checkoutPage.getContinueBtn().click();
+        checkoutPage.getContinueButton().click();
 
         Assert.assertEquals("Error: First Name is required", checkoutPage.getErrorMessage().getText(), "Messages do not match.");
     }
@@ -43,7 +43,7 @@ public class CheckoutPageTest extends BaseTest {
         CheckoutPage checkoutPage=new CheckoutPage(driver);
         checkoutPage.getFirstNameInputField().sendKeys("ASDFG");
         checkoutPage.getPostalCodeInputField().sendKeys("58216");
-        checkoutPage.getContinueBtn().click();
+        checkoutPage.getContinueButton().click();
 
         Assert.assertEquals("Error: Last Name is required", checkoutPage.getErrorMessage().getText(), "Messages do not match.");
     }
@@ -65,7 +65,7 @@ public class CheckoutPageTest extends BaseTest {
         CheckoutPage checkoutPage=new CheckoutPage(driver);
         checkoutPage.getFirstNameInputField().sendKeys("QWERTY");
         checkoutPage.getLastNameInputField().sendKeys("asdeqwe");
-        checkoutPage.getContinueBtn().click();
+        checkoutPage.getContinueButton().click();
 
         Assert.assertEquals("Error: Postal Code is required", checkoutPage.getErrorMessage().getText(), "Messages do not match.");
     }
@@ -88,8 +88,8 @@ public class CheckoutPageTest extends BaseTest {
         checkoutPage.getFirstNameInputField().sendKeys("QWERTY");
         checkoutPage.getLastNameInputField().sendKeys("asdeqwe");
         checkoutPage.getPostalCodeInputField().sendKeys("58216");
-        checkoutPage.getContinueBtn().click();
+        checkoutPage.getContinueButton().click();
 
-        Assert.assertTrue(checkoutPage.getFinishBtn().isDisplayed(), "Finish button to make order is not displayed.");
+        Assert.assertTrue(checkoutPage.getFinishOrderButton().isDisplayed(), "Finish button to make order is not displayed.");
     }
 }

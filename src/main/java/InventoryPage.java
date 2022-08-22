@@ -14,11 +14,9 @@ public class InventoryPage {
 
     By productsPageTitle = By.cssSelector(".title");
 
-    By shoppingCartContainer = By.id("shopping_cart_container");
+    By shoppingCartIcon = By.id("shopping_cart_container");
 
     By shoppingCartContainerBtn = By.cssSelector("a[class='shopping_cart_link']");
-
-    By sauceLabsBackpack = By.id("add-to-cart-sauce-labs-backpack");
 
     By backpackProductName = By.linkText("Sauce Labs Backpack");
 
@@ -26,25 +24,27 @@ public class InventoryPage {
 
     By tShirtProductName = By.linkText("Sauce Labs Bolt T-Shirt");
 
-    By sauceLabsBikeLight = By.id("add-to-cart-sauce-labs-bike-light");
+    By sauceLabsBackpackAddButton = By.id("add-to-cart-sauce-labs-backpack");
 
-    By sauceLabsBoltTShirt = By.id("add-to-cart-sauce-labs-bolt-t-shirt");
+    By sauceLabsBikeLightAddButton = By.id("add-to-cart-sauce-labs-bike-light");
 
-    By sauceLabsFleeceJacket = By.id("add-to-cart-sauce-labs-fleece-jacket");
+    By sauceLabsBoltTShirtAddButton = By.id("add-to-cart-sauce-labs-bolt-t-shirt");
 
-    By sauceLabsOnesie = By.id("add-to-cart-sauce-labs-onesie");
+    By sauceLabsFleeceJacketAddButton = By.id("add-to-cart-sauce-labs-fleece-jacket");
+
+    By sauceLabsOnesieAddButton = By.id("add-to-cart-sauce-labs-onesie");
 
     By testAllTheThingsRed = By.id("remove-test.allthethings()-t-shirt-(red)");
 
-    By shoppingCartContainerBadge = By.xpath("//a[@class='shopping_cart_link']/span[@class='shopping_cart_badge']");
+    By shoppingCartIconBadge = By.xpath("//a[@class='shopping_cart_link']/span[@class='shopping_cart_badge']");
 
-    By inventoryListOfItems = By.xpath("//div[@class='inventory_item_price']");
+    By inventoryListOfItemPrices = By.xpath("//div[@class='inventory_item_price']");
 
-    By productsSortContainer = By.xpath("//select[@class='product_sort_container']");
+    By productsSortDropdown = By.xpath("//select[@class='product_sort_container']");
 
-    By dropdownLowToHighSorter = By.xpath("//option[@value='lohi']"); //- low to high
+    By dropdownMenuLowToHighPriceSorter = By.xpath("//option[@value='lohi']"); //- low to high
 
-    By inventoryPageItemDescriptionText = By.xpath("//*[@class='inventory_item_desc']");
+    By ItemDescriptionTextOfAllTheItems = By.xpath("//*[@class='inventory_item_desc']");
 
     By backpackDescriptionInDetailTextField = By.cssSelector("div[class='inventory_details_desc large_size']");
 
@@ -54,67 +54,40 @@ public class InventoryPage {
         return driver.findElement(productsPageTitle);
     }
 
-    public WebElement getCartContainer(){
-        return driver.findElement(shoppingCartContainer);
-    }
-
     public WebElement getSauceLabsBackpackAddButton(){
-        return driver.findElement(sauceLabsBackpack);
+        return driver.findElement(sauceLabsBackpackAddButton);
     }
 
     public WebElement getSauceLabsBikeLightAddButton(){
-        return driver.findElement(sauceLabsBikeLight);
+        return driver.findElement(sauceLabsBikeLightAddButton);
     }
 
     public WebElement getSauceLabsBoltTShirtAddButton(){
-        return driver.findElement(sauceLabsBoltTShirt);
-    }
-
-    public WebElement getSauceLabsFleeceJacketAddButton(){
-        return driver.findElement(sauceLabsFleeceJacket);
-    }
-
-    public WebElement getSauceLabsOnesieAddButton(){
-        return driver.findElement(sauceLabsOnesie);
-    }
-
-    public WebElement getAllTheThingsRedAddButton(){
-        return driver.findElement(testAllTheThingsRed);
+        return driver.findElement(sauceLabsBoltTShirtAddButton);
     }
 
     public WebElement getShoppingCartBadge(){
-        return driver.findElement(shoppingCartContainerBadge);
+        return driver.findElement(shoppingCartIconBadge);
     }
 
     public WebElement getShoppingCartButton(){
         return driver.findElement(shoppingCartContainerBtn);
     }
 
-    public List<WebElement> getInventoryListOfAllTheItems(){
-        return  driver.findElements(inventoryListOfItems);
+    public List<WebElement> getInventoryListOfAllTheItemPrices(){
+        return  driver.findElements(inventoryListOfItemPrices);
     }
 
-    public WebElement getSortBtn(){
-        return driver.findElement(productsSortContainer);
+    public WebElement getDropdownMenuLowToHighPriceSorter(){
+        return driver.findElement(dropdownMenuLowToHighPriceSorter);
     }
 
-    public WebElement getDropdownLowToHighPrice(){
-        return driver.findElement(dropdownLowToHighSorter);
+    public List <WebElement> getItemDescriptionTextOfAllTheItems(){
+        return driver.findElements(ItemDescriptionTextOfAllTheItems);
     }
 
-    public List <WebElement> getItemDescriptionOfAllTheItems(){
-        return driver.findElements(inventoryPageItemDescriptionText);
-    }
-
-    public WebElement getBackpackProductName(){
-        return driver.findElement(backpackProductName);
-    }
     public WebElement getBikeLightProductName(){
         return driver.findElement(bikeLightProductName);
-    }
-
-    public WebElement getbackpackDescriptionInDetailTextField(){
-        return driver.findElement(backpackDescriptionInDetailTextField);
     }
 
     public WebElement getBikeLightDescriptionInDetailTextField(){

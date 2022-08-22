@@ -21,9 +21,9 @@ public class CheckoutFlowTest extends BaseTest{
         checkoutPage.getFirstNameInputField().sendKeys("QWERTY");
         checkoutPage.getLastNameInputField().sendKeys("asdeqwe");
         checkoutPage.getPostalCodeInputField().sendKeys("58216");
-        checkoutPage.getContinueBtn().click();
-        checkoutPage.getFinishBtn().click();
+        checkoutPage.getContinueButton().click();
+        checkoutPage.getFinishOrderButton().click();
 
-        Assert.assertEquals(checkoutPage.getFinishText().getText(), "Your order has been dispatched, and will arrive just as fast as the pony can get there!", "Order is not complete.");
+        Assert.assertEquals(checkoutPage.getFinishOrderDisplayText().getText(), "Your order has been dispatched, and will arrive just as fast as the pony can get there!", "Order is not complete.");
     }
 }
