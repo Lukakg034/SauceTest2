@@ -1,13 +1,13 @@
+package Pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CheckoutPage {
-
-    public WebDriver driver;
+public class CheckoutPage extends BasePage{
 
     public CheckoutPage(WebDriver driver){
-        this.driver=driver;
+        super(driver);
     }
 
     By firstNameInputField = By.id("first-name");
@@ -50,5 +50,11 @@ public class CheckoutPage {
 
     public WebElement getFinishOrderDisplayText(){
         return driver.findElement(finishOrderDisplayText);
+    }
+
+    public void fillOutCheckoutInputFields(String firstName, String lastName, String postalCode){
+        getFirstNameInputField().sendKeys(firstName);
+        getLastNameInputField().sendKeys(lastName);
+        getPostalCodeInputField().sendKeys(postalCode);
     }
 }

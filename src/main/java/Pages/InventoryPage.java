@@ -1,15 +1,14 @@
+package Pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 
-public class InventoryPage {
-
-    public WebDriver driver;
+public class InventoryPage extends BasePage{
 
     public InventoryPage(WebDriver driver){
-        this.driver=driver;
+        super(driver);
     }
 
     By productsPageTitle = By.cssSelector(".title");
@@ -74,7 +73,7 @@ public class InventoryPage {
         return driver.findElement(shoppingCartContainerBtn);
     }
 
-    public List<WebElement> getInventoryListOfAllTheItemPrices(){
+    public List<WebElement> getPricesOfVisibleItems(){
         return  driver.findElements(inventoryListOfItemPrices);
     }
 
@@ -98,4 +97,9 @@ public class InventoryPage {
         return driver.findElement(tShirtProductName);
     }
 
+    public void addBackpackTShirtBikeLightToCart(){
+        getSauceLabsBackpackAddButton().click();
+        getSauceLabsBoltTShirtAddButton().click();
+        getSauceLabsBikeLightAddButton().click();
+    }
 }

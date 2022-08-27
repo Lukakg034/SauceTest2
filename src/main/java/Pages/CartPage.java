@@ -1,15 +1,18 @@
+package Pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class CartPage {
+public class CartPage extends BasePage {
 
-    public WebDriver driver;
 
     public CartPage(WebDriver driver){
-        this.driver=driver;
+        super(driver);
     }
 
     By checkoutButton = By.name("checkout");
@@ -28,6 +31,10 @@ public class CartPage {
 
     By sauceLabsBackpackCartItem = By.xpath("//div[text()='Sauce Labs Backpack']");
 
+    By sauceLabsBikeLightCartItem = By.xpath("//div[text()='Sauce Labs Bike Light']");
+
+    By sauceLabsTShirtCartItem = By.xpath("//div[text()='Sauce Labs Bolt T-Shirt']");
+
     public WebElement getCheckoutButton(){
         return driver.findElement(checkoutButton);
     }
@@ -44,6 +51,10 @@ public class CartPage {
         return driver.findElement(removeBackpackItemFromCart);
     }
 
+    public WebElement getContinueShoppingButton(){
+        return driver.findElement(continueShoppingButton);
+    }
+
     public WebElement getSauceLabsBackpackCartItem(){
         return driver.findElement(sauceLabsBackpackCartItem);
     }
@@ -58,5 +69,22 @@ public class CartPage {
         }
     }
 
-
+    public boolean isBikeLightVisible(){
+        try{
+            driver.findElement(sauceLabsBikeLightCartItem);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+    public boolean isTShirtVisible(){
+        try{
+            driver.findElement(sauceLabsTShirtCartItem);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
 }

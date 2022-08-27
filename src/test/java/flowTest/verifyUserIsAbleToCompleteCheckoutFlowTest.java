@@ -1,13 +1,19 @@
+package flowTest;
+
+import Pages.CartPage;
+import Pages.CheckoutPage;
+import Pages.InventoryPage;
+import Pages.LandingPage;
+import baseTest.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CheckoutFlowTest extends BaseTest{
-    @Test
-    public void verifyUserIsAbleToCompleteCheckoutFlow(){
+public class verifyUserIsAbleToCompleteCheckoutFlowTest extends BaseTest {
 
+    @Test
+    public void test(){
         LandingPage landingPage=new LandingPage(driver);
-        landingPage.getUsername().sendKeys("standard_user");
-        landingPage.getPassword().sendKeys("secret_sauce");
+        landingPage.fillOutCredentials("standard_user","secret_sauce");
         landingPage.getLoginButton().click();
 
         InventoryPage inventoryPage=new InventoryPage(driver);
@@ -18,9 +24,7 @@ public class CheckoutFlowTest extends BaseTest{
         cartPage.getCheckoutButton().click();
 
         CheckoutPage checkoutPage=new CheckoutPage(driver);
-        checkoutPage.getFirstNameInputField().sendKeys("QWERTY");
-        checkoutPage.getLastNameInputField().sendKeys("asdeqwe");
-        checkoutPage.getPostalCodeInputField().sendKeys("58216");
+        checkoutPage.fillOutCheckoutInputFields("QWERTY","asdeqwe","58216");
         checkoutPage.getContinueButton().click();
         checkoutPage.getFinishOrderButton().click();
 
