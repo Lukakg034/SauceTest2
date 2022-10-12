@@ -4,8 +4,10 @@ import Pages.CartPage;
 import Pages.CheckoutPage;
 import Pages.InventoryPage;
 import Pages.LandingPage;
+import constants.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utility.Helper;
 
 public class verifyIfAllFieldsAreFilledTest extends BaseTest{
     @Test
@@ -16,7 +18,9 @@ public class verifyIfAllFieldsAreFilledTest extends BaseTest{
         landingPage.getLoginButton().click();
 
         InventoryPage inventoryPage=new InventoryPage(driver);
-        inventoryPage.getSauceLabsBackpackAddButton().click();
+        Helper helper = new Helper();
+
+        inventoryPage.getAddToCartButton(helper.getRenamedItemString(Constants.SAUCE_BACKPACK)).click();
         inventoryPage.getShoppingCartButton().click();
 
         CartPage cartPage=new CartPage(driver);

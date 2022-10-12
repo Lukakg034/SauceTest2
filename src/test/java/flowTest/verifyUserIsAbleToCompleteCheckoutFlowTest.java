@@ -5,6 +5,8 @@ import Pages.CheckoutPage;
 import Pages.InventoryPage;
 import Pages.LandingPage;
 import baseTest.BaseTest;
+import constants.Constants;
+import utility.Helper;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,7 +19,9 @@ public class verifyUserIsAbleToCompleteCheckoutFlowTest extends BaseTest {
         landingPage.getLoginButton().click();
 
         InventoryPage inventoryPage=new InventoryPage(driver);
-        inventoryPage.getSauceLabsBackpackAddButton().click();
+        Helper helper = new Helper();
+
+        inventoryPage.getAddToCartButton(helper.getRenamedItemString(Constants.SAUCE_BACKPACK)).click();
         inventoryPage.getShoppingCartButton().click();
 
         CartPage cartPage=new CartPage(driver);

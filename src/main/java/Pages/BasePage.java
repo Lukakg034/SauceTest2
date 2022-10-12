@@ -20,7 +20,7 @@ public class BasePage {
         return myList;
     }
 
-    public List<String> removingdollarsignfromstring(List<String> inventoryItemPricesWithDollar){
+    public List<String> removingDollarSignFromString(List<String> inventoryItemPricesWithDollar){
         List<String> inventoryItemPricesWithoutDollar = new ArrayList<>();
         for (String item:inventoryItemPricesWithDollar){
             String[] removeDollar = item.split("[$]");

@@ -23,6 +23,8 @@ public class InventoryPage extends BasePage{
 
     By tShirtProductName = By.linkText("Sauce Labs Bolt T-Shirt");
 
+    By onesieProductName = By.linkText("Sauce Labs Onesie");
+
     By sauceLabsBackpackAddButton = By.id("add-to-cart-sauce-labs-backpack");
 
     By sauceLabsBikeLightAddButton = By.id("add-to-cart-sauce-labs-bike-light");
@@ -47,7 +49,21 @@ public class InventoryPage extends BasePage{
 
     By backpackDescriptionInDetailTextField = By.cssSelector("div[class='inventory_details_desc large_size']");
 
-    By bikeLightDescriptionInDetailTextField = By.cssSelector("div[class='inventory_details_desc large_size']");
+    By bikeLightProductDetail1 = By.xpath("//a[@id='item_0_title_link']/parent::div/div");
+
+    By bikeLightProductDetail2 = By.xpath("//a[@id='item_0_title_link']/following-sibling::div");
+
+    By bikeLightProductDetail3 = By.xpath("//div[text()='Sauce Labs Bike Light']/parent::a/following-sibling::div");
+
+    By onesieProductDetail = By.xpath("//div[text()='Sauce Labs Onesie']/parent::a/following-sibling::div");
+
+//    public WebElement getProductDescriptionInDetailTextField(String itemText){
+//
+//        return driver.findElement(By.xpath(String.format("//div[text()='%s']/parent::a/following-sibling::div",itemText)));
+//    }
+    public WebElement getAddToCartButton(String itemText){
+        return driver.findElement(By.xpath(String.format("//button[@id='add-to-cart-%s']", itemText)));
+    }
 
     public WebElement getProductContainer(){
         return driver.findElement(productsPageTitle);
@@ -89,8 +105,26 @@ public class InventoryPage extends BasePage{
         return driver.findElement(bikeLightProductName);
     }
 
-    public WebElement getBikeLightDescriptionInDetailTextField(){
-        return driver.findElement(bikeLightDescriptionInDetailTextField);
+    public WebElement getProductDescriptionInDetailTextField(String itemText){
+
+        return driver.findElement(By.xpath(String.format("//div[text()='%s']/parent::a/following-sibling::div",itemText)));
+    }
+
+    public WebElement getOnesieDescriptionInDetailTextField(){
+        return driver.findElement(onesieProductDetail);
+    }
+
+    public WebElement getOnesieAddToCartButton(){
+        return driver.findElement(sauceLabsOnesieAddButton);
+    }
+
+    public WebElement getProductName(String productText){
+
+        return driver.findElement(By.xpath(String.format("//div[text()='%s']", productText)));
+        //return driver.findElement(By.xpath(String.format("//div[text()='%s']/parent::a/following-sibling::div",productText)));
+    }
+    public WebElement getProductItemName(String itemName) {
+        return driver.findElement(By.xpath(String.format("//button[@id='add-to-cart-%s']", itemName)));
     }
 
     public WebElement getTShirtProductName(){

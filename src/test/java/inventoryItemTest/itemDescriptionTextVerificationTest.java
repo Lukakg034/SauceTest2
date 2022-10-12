@@ -2,12 +2,11 @@ package inventoryItemTest;
 
 import Pages.InventoryPage;
 import Pages.LandingPage;
+import Pages.ProductDetailPage;
 import baseTest.BaseTest;
-import org.openqa.selenium.WebElement;
+import constants.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 public class itemDescriptionTextVerificationTest extends BaseTest {
     @Test
@@ -17,18 +16,22 @@ public class itemDescriptionTextVerificationTest extends BaseTest {
         landingPage.getLoginButton().click();
 
         InventoryPage inventoryPage=new InventoryPage(driver);
+        ProductDetailPage productDetailPage=new ProductDetailPage(driver);
 
-        List<WebElement> itemDescriptionOfAllTheItems=inventoryPage.getItemDescriptionTextOfAllTheItems();
-        List<String> inventoryItemListDescriptions = inventoryPage.extractItemTextFromVisibleElements(itemDescriptionOfAllTheItems);
+        String bikeLightInvPageDetails=inventoryPage.getProductDescriptionInDetailTextField("Sauce Labs Bike Light").getText();
+        String onesieInvPageDetails=inventoryPage.getProductDescriptionInDetailTextField("Sauce Labs Onesie").getText();
 
-        String bikeLightProductText=inventoryItemListDescriptions.get(1);
+        inventoryPage.getProductName(Constants.SAUCE_BIKE_LIGHT).click();
 
-        inventoryPage.getBikeLightProductName().click();
+        String bikeLightProductPageDetails = productDetailPage.getProductDetails().getText();
 
-        String bikeLightDetailDescriptionText = inventoryPage.getBikeLightDescriptionInDetailTextField().getText();
+        Assert.assertEquals(bikeLightInvPageDetails, bikeLightProductPageDetails);
 
-        Assert.assertEquals(bikeLightProductText, bikeLightDetailDescriptionText, "Descriptions do not match.");
-        Assert.assertEquals(inventoryItemListDescriptions.get(1), bikeLightDetailDescriptionText, "Descriptions do not match.");
+        productDetailPage.getBackButton().click();
 
+        inventoryPage.getProductName("Sauce Labs Onesie").click();
+        String onesieProductPageDetails =productDetailPage.getProductDetails().getText();
+
+        Assert.assertEquals(onesieInvPageDetails, onesieProductPageDetails);
     }
 }

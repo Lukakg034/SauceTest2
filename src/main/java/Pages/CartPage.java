@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -34,6 +35,20 @@ public class CartPage extends BasePage {
     By sauceLabsBikeLightCartItem = By.xpath("//div[text()='Sauce Labs Bike Light']");
 
     By sauceLabsTShirtCartItem = By.xpath("//div[text()='Sauce Labs Bolt T-Shirt']");
+    public WebElement getProductName(String productText){
+
+            return driver.findElement(By.xpath(String.format("//div[text()='%s']", productText)));
+
+    }
+    public boolean isProductVisible(String productName){
+        try {
+            getProductName(productName);
+            return true;
+        }
+        catch (NoSuchElementException nse){
+            return false;
+        }
+    }
 
     public WebElement getCheckoutButton(){
         return driver.findElement(checkoutButton);
